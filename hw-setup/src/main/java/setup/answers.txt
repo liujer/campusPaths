@@ -4,15 +4,18 @@
 1. Why did Fibonacci fail the testThrowsIllegalArgumentException< test? What (if anything) did
 you have to do to fix it? If you did not have to change anything to fix this issue, explain why.
 
-
+0 was considered a nonnegative number, yet the method threw an IllegalExceptionError when 0 was passed in.
+By changing the initial if condition to (n < 0) from (n <= 0), the method correctly threw an
+IllegalExceptionError when n was negative.
 
 2. Why did Fibonacci fail the testBaseCase test? What (if anything) did you have to do to fix
 it? If you did not have to change anything to fix this issue, explain why.
-
+The first number in the sequence started with 0 instead of 1. By changing the code so that
+the first two numbers in the sequence started with 1, the testBaseCase test was satisfied.
 
 
 3.Why did Fibonacci fail the testInductiveCase test? What (if anything) did you have to do to
 fix it? If you did not have to change anything to fix this issue, explain why.
-
-
+The numbers were being subtracted rather than added to previous "sums". Changing the return statement to
+add both values instead of subtract fixed this issue.
 
