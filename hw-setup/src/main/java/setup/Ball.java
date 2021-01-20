@@ -43,22 +43,6 @@ public class Ball {
     }
 }
 
-/**
- * Object used to compare balls based on volume
- */
-class SortByVolume implements Comparator<Ball> {
-
-    /**
-     * Compares balls for order based on volume
-     * @param b1 - first ball to be compared
-     * @param b2 - second ball to be compared
-     * @return a negative integer, zero, or a positive integer as the first
-     * argument is less than, equal to, or greater than the second
-     */
-    public int compare(Ball b1, Ball b2) {
-        return (int) (b1.getVolume() - b2.getVolume());
-    }
-}
 
 
 

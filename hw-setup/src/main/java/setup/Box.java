@@ -83,7 +83,7 @@ public class Box implements Iterable<Ball> {
         List<Ball> tempContents = new ArrayList<>();
         Iterator<Ball> itr= ballContainer.iterator();
         itr.forEachRemaining(tempContents::add);
-        Collections.sort(tempContents, new SortByVolume());
+        Collections.sort(tempContents, Comparator.comparingDouble(Ball::getVolume));
         return tempContents.iterator();
     }
 
