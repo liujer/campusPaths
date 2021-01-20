@@ -12,7 +12,7 @@
 package setup;
 
 import java.lang.Iterable;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * This is a container can be used to contain Balls. The key
@@ -25,6 +25,7 @@ public class Box implements Iterable<Ball> {
      * ballContainer is used to internally store balls for this Box
      */
     private BallContainer ballContainer;
+    private double maxVolume;
 
     /**
      * Constructor that creates a new box.
@@ -32,8 +33,8 @@ public class Box implements Iterable<Ball> {
      * @param maxVolume Total volume of balls that this box can contain.
      */
     public Box(double maxVolume) {
-        // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        this.ballContainer = new BallContainer();
+        this.maxVolume = maxVolume;
     }
 
     /**
@@ -64,8 +65,10 @@ public class Box implements Iterable<Ball> {
      * @spec.requires b != null.
      */
     public boolean add(Ball b) {
-        // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        if (ballContainer.getVolume() + b.getVolume() <= maxVolume) {
+            return ballContainer.add(b);
+        }
+        return false;
     }
 
     /**
@@ -77,8 +80,11 @@ public class Box implements Iterable<Ball> {
      * ascending size.
      */
     public Iterator<Ball> getBallsFromSmallest() {
-        // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        List<Ball> tempContents = new ArrayList<>();
+        Iterator<Ball> itr= ballContainer.iterator();
+        itr.forEachRemaining(tempContents::add);
+        Collections.sort(tempContents, new SortByVolume());
+        return tempContents.iterator();
     }
 
     /**
