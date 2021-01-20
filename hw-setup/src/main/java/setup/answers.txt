@@ -19,7 +19,3 @@ fix it? If you did not have to change anything to fix this issue, explain why.
 The numbers were being subtracted rather than added to previous "sums". Changing the return statement to
 add both values instead of subtract fixed this issue.
 
-## Part 7
-Added a SortByVolume class that implemented Comparator interface in Box.java to compare balls
-based on their volumes
-
