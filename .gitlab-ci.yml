@@ -31,7 +31,7 @@ poly-build:
 
 poly-validation:
   stage: validation
-  script: $RUNNER_SCRIPT validation
+  script: $RUNNER_SCRIPT hw-poly validation
   only: ["hw4-final"]
   except: ["branches"]
 
