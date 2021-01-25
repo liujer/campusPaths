@@ -3,14 +3,52 @@
 ###########################################################################
 
 1. Multiplication Pseudocode
+r = p*q:
 
-
+    {inv: r = q0 * p0 + q0 * p1 + ... + q0*p(i-1) + q1*p0 + ... q(j-1) * p0}
+    foreach term tq in q:
+        foreach term tp in p:
+            add tq * tp to r
 
 2. Division Pseudocode
-
-
+r = p / q:
+    dividend = p;
+    divisor = q[0];
+    start = index of first nonzero coeff. in dividend (else -1)
+    {inv: r = dividend[0] / divisor +...+ dividend[start] / divisor}
+    while(dividend[start] degree >= divisor degree) {
+        curr = dividend[start] / divisor
+        add curr to r
+        subtract curr * q from dividend
+        start = index of first nonzero coeff. in dividend (else -1)
+    }
 
 3. Division Example: (x3+x-1) / (x+1) = x2-x+2
+    dividend = x3+x-1
+    divisor = x+1
+    start = 0
+    while(dividend[start] degree >= divisor degree && start != -1) {
+        first iteration:
+            curr = x3 / x = x2
+            r = x2
+            subtract curr * q from dividend
+            dividend = {0, -1x2, 1, -1}
+            start = 1
+        second iteration:
+            curr = -1x2 / x = -1x
+            r = x2 - x
+            subtract curr * q from dividend
+            dividend = {0, 0, 2x, 0}
+            start = 2
+        third iteration:
+            curr = 2x / x = 2
+            r = x2 - x + 2
+            subtract curr * q from dividend
+            dividend = {0, 0, 0, -2}
+            start = -1;
+
+    }
+    r = x2 - x + 2
 
 
 
