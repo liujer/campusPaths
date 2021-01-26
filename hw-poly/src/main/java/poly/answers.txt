@@ -69,9 +69,8 @@ r = p / q:
 
 
 3. Constructor checkReps
-It wouldn't make sense to have checkReps at the start of the constructor, as
-numer and denom have not been set yet. No method of RatNum can be called until
-the object has been constructed.
+No method of RatNum can directly change the fields in the RatNum object, so
+the only time checkReps is necessary is after the fields are changed in the constructor.
 
 
 
