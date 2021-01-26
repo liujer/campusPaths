@@ -57,15 +57,21 @@ r = p / q:
 ###########################################################################
 
 1. Weakened Rep Invariant
-
+- constructor would set n and d directly to numer and denom fields instead of reducing the numbers
+- checkRep would not need to include a check for reduced form
+- equals would not work if rational number is not reduced, must reduce both numbers to be compared
+- toString would need to reduce the number first before returning as string
 
 
 2. Alternate add, sub, mul, div
-
+    @spec.effects does not mention that the object fields themselves have changed in
+    returning itself
 
 
 3. Constructor checkReps
-
+It wouldn't make sense to have checkReps at the start of the constructor, as
+numer and denom have not been set yet. No method of RatNum can be called until
+the object has been constructed.
 
 
 
