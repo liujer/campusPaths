@@ -78,19 +78,28 @@ the only time checkReps is necessary is after the fields are changed in the cons
 ###########################################################################
 
 1. Calls to checkRep in RatTerm
-
+I called checkRep at the end of the constructor in RatTerm as none of methods change
+the fields of the object and the fields themselves are immutable
 
 
 2. Weakened Rep Invariant
-
+- add() and sub() would check what term was zero before adding the other instead of
+checking its exponent, this could make the code clearer to read without the conditionals
+- the constructor would simply set this.expt to the given e instead of checking for a
+zero exponent value
+- toString would need additional checks for 0 valued exponent, otherwise cases such
+as 0x of 0x^3 could occur, which is not allowed by @return
 
 
 3. Alternate Rep Invariant
-
+- the constructor would change to force the expt to be 0 if the coefficient was
+NaN. Other than that, the other methods do not make use of a RatNum that has a
+coeff. of NaN, so the expt is uneffected.
 
 
 4. Preferred Invariants
-
+Coeff.equals(RatNum.ZERO) ⇒ expt = 0 was a useful invariant because of the case
+where 0^0 would be undefined if x happened to be 0, i.e. a RatTerm of 0x^0
 
 
 

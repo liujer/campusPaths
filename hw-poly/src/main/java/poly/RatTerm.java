@@ -184,13 +184,7 @@ public final class RatTerm {
      */
     public RatTerm sub(RatTerm arg) {
         // TODO: Fill in this method, then remove the RuntimeException
-        if (this.isNaN() || arg.isNaN()) {
-            return NaN;
-        }
-        if(!this.isZero() && !arg.isZero() && this.expt != arg.expt) {
-            throw new IllegalArgumentException("Degrees are not the same");
-        }
-        return new RatTerm(this.coeff.sub(arg.coeff), this.expt == 0 ? arg.expt : this.expt);
+        return this.add(arg.negate());
     }
 
     /**
