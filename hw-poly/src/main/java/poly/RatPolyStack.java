@@ -56,7 +56,10 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      */
     public int size() {
         // TODO: Fill in this method, then remove the RuntimeException
-        throw new RuntimeException("RatPolyStack.size() is not yet implemented");
+        checkRep();
+        int size = polys.size();
+        checkRep();
+        return size;
     }
 
     /**

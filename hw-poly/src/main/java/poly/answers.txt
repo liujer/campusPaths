@@ -78,8 +78,9 @@ the only time checkReps is necessary is after the fields are changed in the cons
 ###########################################################################
 
 1. Calls to checkRep in RatTerm
-I called checkRep at the end of the constructor in RatTerm as none of methods change
-the fields of the object and the fields themselves are immutable
+I called checkRep at the end of the constructor in RatTerm and the beginning and end of all
+methods I implemented to check if @spec.requires is satisfied and if private fields are unchanged
+in a way which the invariant is affected.
 
 
 2. Weakened Rep Invariant
@@ -107,10 +108,17 @@ where 0^0 would be undefined if x happened to be 0, i.e. a RatTerm of 0x^0
 ###########################################################################
 
 1. Calls to checkRep in RatPoly
-
+Similar to RatTerm, I included checks at the end of constructors to make sure the
+variables used to construct RatPoly were valid, at the beginning of methods to
+make sure terms was in sorted order (descending), and at the end of methods
+to make sure private fields were not changed
 
 
 2. Alternate Representation
-
+A large disadvantage would be that we would have to reimplement most of
+the RatTerm methods in order to use them for RatPoly operations. Additionally,
+we would need to keep track of two separate lists instead of a single one, potentially
+decreasing efficiency. Representing RatPoly as a list of RatTerms is easier in this
+sense.
 
 

@@ -147,10 +147,13 @@ public final class RatTerm {
      */
     public RatTerm negate() {
         // TODO: Fill in this method, then remove the RuntimeException
+        checkRep();
         if (this.isNaN()) {
             return NaN;
         }
-        return new RatTerm(coeff.negate(), expt);
+        RatTerm negated = new RatTerm(coeff.negate(), expt);
+        checkRep();
+        return negated;
     }
 
     /**
@@ -164,13 +167,16 @@ public final class RatTerm {
      */
     public RatTerm add(RatTerm arg) {
         // TODO: Fill in this method, then remove the RuntimeException
+        checkRep();
         if (this.isNaN() || arg.isNaN()) {
             return NaN;
         }
         if (!this.isZero() && !arg.isZero() && this.expt != arg.expt) {
             throw new IllegalArgumentException("Degrees are not the same");
         }
-        return new RatTerm(this.coeff.add(arg.coeff), this.expt == 0 ? arg.expt : this.expt);
+        RatTerm added = new RatTerm(this.coeff.add(arg.coeff), this.expt == 0 ? arg.expt : this.expt);
+        checkRep();
+        return added;
     }
 
     /**
@@ -184,7 +190,10 @@ public final class RatTerm {
      */
     public RatTerm sub(RatTerm arg) {
         // TODO: Fill in this method, then remove the RuntimeException
-        return this.add(arg.negate());
+        checkRep();
+        RatTerm subtracted = this.add(arg.negate());
+        checkRep();
+        return subtracted;
     }
 
     /**
@@ -196,10 +205,13 @@ public final class RatTerm {
      */
     public RatTerm mul(RatTerm arg) {
         // TODO: Fill in this method, then remove the RuntimeException
+        checkRep();
         if (this.isNaN() || arg.isNaN()) {
             return NaN;
         }
-        return new RatTerm(this.coeff.mul(arg.coeff), this.expt + arg.expt);
+        RatTerm mulTerm = new RatTerm(this.coeff.mul(arg.coeff), this.expt + arg.expt);
+        checkRep();
+        return mulTerm;
     }
 
     /**
@@ -212,10 +224,13 @@ public final class RatTerm {
      */
     public RatTerm div(RatTerm arg) {
         // TODO: Fill in this method, then remove the RuntimeException
+        checkRep();
         if (arg.isZero() || arg.isNaN() || this.isNaN()) {
             return NaN;
         }
-        return new RatTerm(this.coeff.div(arg.coeff), this.expt - arg.expt);
+        RatTerm divTerm = new RatTerm(this.coeff.div(arg.coeff), this.expt - arg.expt);
+        checkRep();
+        return divTerm;
     }
 
     /**
@@ -229,10 +244,13 @@ public final class RatTerm {
      */
     public RatTerm differentiate() {
         // TODO: Fill in this method, then remove the RuntimeException
+        checkRep();
         if (this.isNaN()) {
             return NaN;
         }
-        return new RatTerm(this.coeff.mul(new RatNum(this.expt, 1)), this.expt - 1);
+        RatTerm difTerm = new RatTerm(this.coeff.mul(new RatNum(this.expt)), this.expt - 1);
+        checkRep();
+        return difTerm;
     }
 
     /**
@@ -247,10 +265,13 @@ public final class RatTerm {
      */
     public RatTerm antiDifferentiate() {
         // TODO: Fill in this method, then remove the RuntimeException
+        checkRep();
         if (this.isNaN()) {
             return NaN;
         }
-        return new RatTerm(this.coeff.div(new RatNum(this.expt + 1, 1)), this.expt + 1);
+        RatTerm antiDifTerm = new RatTerm(this.coeff.div(new RatNum(this.expt + 1)), this.expt + 1);
+        checkRep();
+        return antiDifTerm;
     }
 
     /**
