@@ -55,7 +55,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @return the size of this sequence
      */
     public int size() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         int size = polys.size();
         checkRep();
@@ -71,7 +70,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.effects this_post = [p]:this
      */
     public void push(RatPoly p) {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         polys.push(p);
         checkRep();
@@ -86,7 +84,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.effects If this = [p]:S then this_post = S
      */
     public RatPoly pop() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         RatPoly poppedPoly = polys.pop();
         checkRep();
@@ -101,7 +98,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.effects If this = [p]:S then this_post = [p, p]:S
      */
     public void dup() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         RatPoly dupPoly = polys.peek();
         push(dupPoly);
@@ -115,7 +111,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.effects If this = [p1, p2]:S then this_post = [p2, p1]:S
      */
     public void swap() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         RatPoly p1 = pop();
         RatPoly p2 = pop();
@@ -130,7 +125,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.effects this_post = []
      */
     public void clear() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         polys.clear();
         checkRep();
@@ -144,7 +138,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.requires {@code index >= 0 && index < this.size()}
      */
     public RatPoly getNthFromTop(int index) {
-        // TODO: Fill in this method, then remove the RuntimeException
         int i = 0;
         Stack<RatPoly> temp = new Stack<>();
         while (i != index) {
@@ -166,7 +159,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.effects If this = [p1, p2]:S then this_post = [p3]:S where p3 = p1 + p2
      */
     public void add() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         RatPoly p1 = pop();
         RatPoly p2 = pop();
@@ -183,7 +175,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.effects If this = [p1, p2]:S then this_post = [p3]:S where p3 = p2 - p1
      */
     public void sub() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         RatPoly p1 = pop();
         RatPoly p2 = pop();
@@ -200,7 +191,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.effects If this = [p1, p2]:S then this_post = [p3]:S where p3 = p1 * p2
      */
     public void mul() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         RatPoly p1 = pop();
         RatPoly p2 = pop();
@@ -217,7 +207,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.effects If this = [p1, p2]:S then this_post = [p3]:S where p3 = p2 / p1
      */
     public void div() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         RatPoly p1 = pop();
         RatPoly p2 = pop();
@@ -234,7 +223,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * @spec.effects If this = [p1]:S then this_post = [p2]:S where p2 = derivative of p1
      */
     public void differentiate() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         RatPoly p1 = pop();
         push(p1.differentiate());
@@ -251,7 +239,6 @@ public final class RatPolyStack implements Iterable<RatPoly> {
      * with integration constant 0
      */
     public void integrate() {
-        // TODO: Fill in this method, then remove the RuntimeException
         checkRep();
         RatPoly p1 = pop();
         push(p1.antiDifferentiate(RatNum.ZERO));
