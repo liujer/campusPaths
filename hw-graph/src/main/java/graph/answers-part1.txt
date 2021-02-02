@@ -87,7 +87,7 @@ included each one; if not, explain whether you considered additional classes and
 not to include them.
 
 addNode and addEdge were necessary in forming the basic components of a directed graph. listNode,
-listChildren, and nodeExists are important to view the state of a graph.
+listChildren, nodeExists, and getLabel methods are important to view the state of a graph.
 
 
 ## Section 3
@@ -95,6 +95,15 @@ listChildren, and nodeExists are important to view the state of a graph.
 
 What was your testing strategy for this assignment? How do your script tests and JUnit tests
 differ from each other (if they do), and why?
+
+For methods that added things to the graph, I added more test cases to their scripts in order
+to expose all the edge cases in the specification I wrote, as well as tested general behavior
+of the graph after adding the nodes/edges and assumed that the observer methods worked
+in order for the output format to be correct. For methods that observed the state of the object, I
+assumed that the mutator methods worked in setting the state of the object, and checked if the outputs
+of the methods matched what I intended for them to be. In this case I also added test cases for
+exposing the edge cases that I wrote in the specification. I didn't write any JUnit tests as I felt
+that the test scripts thoroughly covered most possible states of the object.
 
 
 
