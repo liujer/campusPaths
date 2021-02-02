@@ -1,0 +1,12 @@
+# Tests adding three nodes to a directed graph, as well as
+# adding duplicate nodes to another directed graph
+CreateGraph A
+AddNode A one
+AddNode A two
+AddNode A three
+ListNodes A
+CreateGraph B
+AddNode B one
+AddNode B two
+AddNode B two
+ListNodes B

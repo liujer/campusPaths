@@ -1,0 +1,13 @@
+# Tests adding three nodes to a directed graph, as well as
+# adding duplicate nodes to another directed graph
+Created graph A
+Added node one to A
+Added node two to A
+Added node three to A
+ListNodes of A output: one three two
+Created graph B
+AddNode B one
+Added node one to B
+Added node two to B
+Could not add node two to B
+ListNodes of B output: one two

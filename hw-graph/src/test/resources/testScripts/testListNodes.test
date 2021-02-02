@@ -1,0 +1,9 @@
+# Tests the method listNodes in DLGraph by adding
+# nodes to graphs and checking if nodes are outputted
+# correctly
+CreateGraph A
+AddNode A one
+AddNode A two
+ListNodes A
+CreateGraph B
+ListNodes B

@@ -1,0 +1,11 @@
+# Tests the nodeExists method in DLGraph by adding nodes to a
+# graph and determining if a particular node exists in the graph
+Created graph A
+Added node one to A
+Added node two to A
+Added node three to A
+one exists in A
+two exists in A
+three exists in A
+four does not exist in A
+Three does not exist in A

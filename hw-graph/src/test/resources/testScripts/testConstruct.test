@@ -1,0 +1,5 @@
+# Tests construction of the DLGraph object with multiple objects created
+CreateGraph A
+ListNodes A
+CreateGraph B
+ListNodes B

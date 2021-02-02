@@ -1,0 +1,27 @@
+# Tests the method getLabel in DLGraph by adding nodes
+# and edges to a graph and checking if the label returned
+# is correct
+Created graph A
+Added node one to A
+Added node two to A
+Added node three to A
+Added edge e12 to A
+Added edge e13 to A
+Label of one and two in A output: e12
+Label of one and three in A output: e13
+Label of two and three does not exist in A
+Label of one and Two does not exist in A
+Created graph B
+Added node one to B
+Added node two to B
+Added node three to B
+Added edge e12 to B
+Added edge
+CreateGraph B
+AddNode B one
+AddNode B two
+AddNode B three
+AddEdge B one two e12
+AddEdge B three two e13
+Label of one and two in B output: e12
+Label of three and two in B output: e32
