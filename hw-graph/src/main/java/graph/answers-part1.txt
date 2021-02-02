@@ -8,27 +8,38 @@
     ### IntQueue1
 
     Abstraction Function:
-
-
+    Entries is a list of integers that represents a queue
+    where the front of the list is the next item to be removed
+    while the end of the list is last item that was added
 
     Representation Invariant:
-
+    Elements will always be added at the end of the list and
+    removed from the front of the list, i.e. elements between
+    front and end are preserved in the same order after an
+    operation.
 
 
 
     ### IntQueue2
 
     Abstraction Function:
-
+    Entries is an array of integers that represents a queue, where
+    front represents the front of the queue (the index of the
+    next item to be removed in the array) and size represents the
+    number of integers in the queue.
 
 
     Representation Invariant:
-
+    Elements will always be added at index front + size % length of array
+    and removed at index front in the array. The elements from indexes front to
+    (front + size - 1) % length of array are preserved in the same order after an operation.
 
 
 
 2. Group the snapshots of IntQueue2's internal state into groups that have the same abstract state.
-
+    A, B, D, G - space remaining to add to queue
+    E - no space remaining to add to queue
+    C, F, H - elements are wrapped around
 
 
 
@@ -36,27 +47,34 @@
 could possibly expose the representation, given the information available. Explain any assumptions you made.
 
     a. `public int solveEquations(int x, int y, int z)`
-
+        solveEquations seems to plug in values into an equation and output
+        the result. The purpose of the method and the return value shows that
+        it would not expose the rep.
 
 
     b. `public String[] decode(boolean slowly)`
-
+        As strings are immutable, the method will not expose the rep.
 
 
     c. `private Date myBirthday()`
-
+        If the Date object is a field in the current object, returning
+        it can expose the rep even if it is a private method.
 
 
     d. `public String toString()`
-
+        toString might view fields of the object to convert it to
+        a string. The return value is a string, so assuming toString does
+        not mutate the fields of the object, it would not expose the rep.
 
 
     e. `public Iterator<Integer> elements()`
-
+        Returning an iterator could possibly expose the rep if an iterator
+        of fields in the object is returned.
 
 
     f. `public Deck(List<Card> cards)`
-
+        Assuming that the constructor accounts for the rep before the
+        rep check is called, the constructor will not expose the rep
 
 
 
