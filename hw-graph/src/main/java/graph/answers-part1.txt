@@ -86,7 +86,8 @@ interface to a graph. If your design includes multiple classes or interfaces, ex
 included each one; if not, explain whether you considered additional classes and why you decided
 not to include them.
 
-
+addNode and addEdge were necessary in forming the basic components of a directed graph. listNode,
+listChildren, and nodeExists are important to view the state of a graph.
 
 
 ## Section 3
