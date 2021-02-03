@@ -1,0 +1,10 @@
+# Tests adding of edges by using two nodes
+# that point to each other
+CreateGraph B
+AddNode B one
+AddNode B two
+AddEdge B one two e12
+AddEdge B two one e21
+ListNodes B
+ListChildren B one
+ListChildren B two

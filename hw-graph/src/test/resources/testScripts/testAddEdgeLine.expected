@@ -1,0 +1,9 @@
+# Tests adding of edges by using two nodes
+# that are in a line
+Created graph C
+Added node one to C
+Added node two to C
+Added edge e12 to C
+ListNodes of C output: one two
+ListChildren of one in C output: two
+ListChildren of two in C output:

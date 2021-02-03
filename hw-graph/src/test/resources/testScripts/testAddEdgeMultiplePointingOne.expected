@@ -1,0 +1,12 @@
+# Tests adding of edges by having multiple
+# nodes point to one node
+Created graph E
+Added node one to E
+Added node two to E
+Added node three to E
+Added edge e12 to E
+Added edge e32 to E
+ListNodes of E output: one three two
+ListChildren of one in E output: two
+ListChildren of two in E output:
+ListChildren of three in E output: two

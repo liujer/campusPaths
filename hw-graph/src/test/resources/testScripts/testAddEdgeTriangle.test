@@ -1,0 +1,16 @@
+# Tests adding of edges by using a three node graph and
+# connecting them in a triangle formation
+CreateGraph A
+AddNode A one
+AddNode A two
+AddNode A three
+AddEdge A one two e12
+AddEdge A two three e23
+AddEdge A three one e31
+ListNodes A
+ListChildren A one
+ListChildren A two
+ListChildren A three
+
+
+

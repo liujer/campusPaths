@@ -1,0 +1,6 @@
+# Tests adding three nodes to a directed graph
+CreateGraph A
+AddNode A one
+AddNode A two
+AddNode A three
+ListNodes A

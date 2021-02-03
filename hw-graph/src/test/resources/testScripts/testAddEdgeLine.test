@@ -1,0 +1,9 @@
+# Tests adding of edges by using two nodes
+# that are in a line
+CreateGraph C
+AddNode C one
+AddNode C two
+AddEdge C one two e12
+ListNodes C
+ListChildren C one
+ListChildren C two

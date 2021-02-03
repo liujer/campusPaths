@@ -1,0 +1,3 @@
+# Tests listNodes method on an empty graph
+CreateGraph B
+ListNodes B

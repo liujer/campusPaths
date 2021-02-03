@@ -9,14 +9,3 @@ Added node e13 to A
 ListChildren of one in A output: three two
 ListChildren of two in A output:
 ListChildren of three in A output:
-Created graph B
-Added node one to B
-Added node two to B
-Added node three to B
-Added edge e12 to B
-Added edge e32 to B
-ListChildren of one in B output: two
-ListChildren of two in B output:
-ListChildren of three in B output: two
-Created graph C
-one does not exist in graph C

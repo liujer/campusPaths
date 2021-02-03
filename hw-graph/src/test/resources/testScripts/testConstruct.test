@@ -1,5 +1,3 @@
-# Tests construction of the DLGraph object with multiple objects created
+# Tests construction of an empty DLGraph object
 CreateGraph A
 ListNodes A
-CreateGraph B
-ListNodes B

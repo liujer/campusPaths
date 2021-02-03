@@ -1,0 +1,11 @@
+# Tests the method listChildren of DLGraph by adding a
+# node with multiple children
+CreateGraph A
+AddNode A one
+AddNode A two
+AddNode A three
+AddEdge A one two e12
+AddEdge A one three e13
+ListChildren A one
+ListChildren A two
+ListChildren A three

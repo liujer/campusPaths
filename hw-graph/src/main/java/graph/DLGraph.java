@@ -73,10 +73,21 @@ public class DLGraph {
     }
 
     /**
+     * Checks whether or not a particular edge exists in the graph
+     * @param start Represents the starting node of the edge
+     * @param end Represents the destination node of the edge
+     * @return true if edge exists between start and end
+     * @spec.requires start and end must be nodes in the graph
+     */
+    public boolean edgeExists(String start, String end) {
+        throw new RuntimeException("Not Implemented yet");
+    }
+
+    /**
      * Returns the label of a given edge
      * @param start Represents the starting node of the edge
      * @param end Represents the destination node of the edge
-     * @return label of edge corresponding to start and end as a Striing
+     * @return label of edge corresponding to start and end as a String
      * @throws IllegalArgumentException if edge does not exist
      */
     public String getLabel(String start, String end) {

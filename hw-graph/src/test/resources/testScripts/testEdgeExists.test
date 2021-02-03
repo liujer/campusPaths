@@ -1,0 +1,9 @@
+# Tests method edgeExists by adding nodes and edges
+# to a graph and checking if particular edges exist
+# between the nodes
+CreateGraph A
+AddNode A one
+AddNode A two
+AddEdge A one two e12
+EdgeExists A one two
+EdgeExists A two one

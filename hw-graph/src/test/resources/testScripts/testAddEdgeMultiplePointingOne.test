@@ -1,0 +1,12 @@
+# Tests adding of edges by having multiple
+# nodes point to one node
+CreateGraph E
+AddNode E one
+AddNode E two
+AddNode E three
+AddEdge E one two e12
+AddEdge E three two e32
+ListNodes E
+ListChildren E one
+ListChildren E two
+ListChildren E three

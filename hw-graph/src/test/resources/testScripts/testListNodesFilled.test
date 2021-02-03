@@ -2,9 +2,6 @@
 # nodes to graphs and checking if nodes are outputted
 # correctly
 CreateGraph A
-Created graph A
-Added node one to A
-Added node two to A
-ListNodes of A output: one two
-Created graph B
-ListNodes of B output:
+AddNode A one
+AddNode A two
+ListNodes A

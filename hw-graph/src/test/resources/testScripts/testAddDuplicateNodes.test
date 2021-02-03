@@ -1,0 +1,6 @@
+# Tests adding duplicate nodes to a graph
+CreateGraph B
+AddNode B one
+AddNode B two
+AddNode B two
+ListNodes B

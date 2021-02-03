@@ -2,8 +2,7 @@
 # nodes to graphs and checking if nodes are outputted
 # correctly
 CreateGraph A
-AddNode A one
-AddNode A two
-ListNodes A
-CreateGraph B
-ListNodes B
+Created graph A
+Added node one to A
+Added node two to A
+ListNodes of A output: one two
