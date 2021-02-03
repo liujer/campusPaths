@@ -87,7 +87,7 @@ included each one; if not, explain whether you considered additional classes and
 not to include them.
 
 addNode and addEdge were necessary in forming the basic components of a directed graph. listNode,
-listChildren, nodeExists, and getLabel methods are important to view the state of a graph.
+listChildren, nodeExists, edgeExists, and getLabel methods are important to view the state of a graph.
 
 
 ## Section 3
