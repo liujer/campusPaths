@@ -9,15 +9,11 @@
 
     Abstraction Function:
     Entries is a list of integers that represents a queue
-    where the front of the list is the next item to be removed
-    while the end of the list is last item that was added
+    where the entries[0] is the front of the queue and 
+    entries[size] is back of the queue
 
     Representation Invariant:
-    Elements will always be added at the end of the list and
-    removed from the front of the list, i.e. elements between
-    front and end are preserved in the same order after an
-    operation.
-
+    For any index i such that 0 ≤ i < size, entries[i] != null
 
 
     ### IntQueue2
@@ -30,9 +26,8 @@
 
 
     Representation Invariant:
-    Elements will always be added at index front + size % length of array
-    and removed at index front in the array. The elements from indexes front to
-    (front + size - 1) % length of array are preserved in the same order after an operation.
+    For any index i such that 0 ≤ i < size, entries[size] != null
+
 
 
 
