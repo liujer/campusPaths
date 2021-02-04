@@ -57,8 +57,8 @@ could possibly expose the representation, given the information available. Expla
 
 
     c. `private Date myBirthday()`
-        If the Date object is a field in the current object, returning
-        it can expose the rep even if it is a private method.
+        Since the method is private, it cannot be called by the client.
+        Therefore it would not expose the rep.
 
 
     d. `public String toString()`
