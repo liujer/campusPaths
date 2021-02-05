@@ -1,9 +1,0 @@
-# Tests method edgeExists by adding nodes and edges
-# to a graph and checking if particular edges exist
-# between the nodes
-Created graph A
-Added node one to A
-Added node two to A
-Added edge e12 to A
-Edge from one to two exists
-Edge from two to one does not exist
