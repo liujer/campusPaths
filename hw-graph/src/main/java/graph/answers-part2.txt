@@ -15,7 +15,16 @@ A few examples of possible Graph representations:
 1. In two or three sentences, explain an advantage and a disadvantage of each of the
 representations listed above (for example, in terms of runtime complexity, space
 complexity, or ease of implementation).
+A: Very easy to implement, simply inserting edges in a list. However, runtime complexity
+when looking for particular edges will be O(n)
 
+B: Slow to remove edges, but fastest implementation overall. Adding edges and nodes
+occur in O(1) and finding if edge exists occurs in O(E) where V is number of nodes
+
+C: Large space complexity (O(|V| * |E|)) and adding additional edges/nodes will also
+cost O(|V| * |E|). Checking just if an edge exists between two nodes
+will occur very quickly (O(1)) but searching for a particular edge will occur in O(|E|)
+where E is the number of edges
 
 
 
@@ -23,6 +32,10 @@ complexity, or ease of implementation).
 chose it. If you chose to use a different representation than one of the three we described
 above, be sure to list its advantages and disadvantages, too.
 
+I chose to implement the adjacency list because of its easier implementation in terms of only
+having to implement a single public class and the fast runtime complexity. The main functions of
+the graph in my design focus on only adding nodes/edges and looking them up, so the adjacency list
+serves its purpose well in that field compared to the other implementations.
 
 
 
