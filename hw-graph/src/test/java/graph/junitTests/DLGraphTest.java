@@ -2,6 +2,10 @@ package graph.junitTests;
 
 import graph.DLGraph;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class DLGraphTest {
@@ -22,7 +26,9 @@ public class DLGraphTest {
 
     @Test
     public void testGetLabel() {
-        assertEquals("e12", twoNodeGraph.getLabel("one", "two"));
+        List<String> expected = new ArrayList<>();
+        expected.add("e12");
+        assertEquals(expected, twoNodeGraph.getLabel("one", "two"));
     }
 
     @Test(expected = IllegalArgumentException.class)
