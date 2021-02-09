@@ -1,6 +1,5 @@
 # Tests adding duplicate nodes to a graph
 Created graph B
-AddNode B one
 Added node one to B
 Added node two to B
 Could not add node two to B

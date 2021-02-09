@@ -51,23 +51,27 @@ public class DLGraph {
     public DLGraph() {
         dlGraph = new HashMap<>();
         checkRep();
-    };
+    }
 
     /**
      * Adds a node to the graph
      * @param data Represents the data contained in the node
-     * @throws IllegalArgumentException if node data already exists in graph
-     * or data == null
+     * @return false if node already exists in graph, true if added to graph
+     * @throws IllegalArgumentException if data == null
      * @spec.effects  a node with data is added to the graph
      */
-    public void addNode(String data) {
+    public boolean addNode(String data) {
         checkRep();
-        if (dlGraph.containsKey(data) || data == null) {
+        if (data == null) {
             throw new IllegalArgumentException();
+        }
+        if (dlGraph.containsKey(data)) {
+            return false;
         }
         dlGraph.put(data, new ArrayList<DLEdge>());
         checkRep();
-    };
+        return true;
+    }
 
     /**
      * Adds an edge connecting two nodes to the graph
@@ -105,7 +109,8 @@ public class DLGraph {
      * @throws IllegalArgumentException if node does not exist in
      * the graph or data == null
      */
-    public List<String> listChildren(String data) {
+    public List<String> listChildren(String data)
+    throws IllegalArgumentException {
         checkRep();
         if (!nodeExists(data) || data == null) {
             throw new IllegalArgumentException();
@@ -155,7 +160,8 @@ public class DLGraph {
      * @return label of edge corresponding to start and end as a String
      * @throws IllegalArgumentException if edge does not exist
      */
-    public List<String> getLabel(String start, String end) {
+    public List<String> getLabel(String start, String end)
+    throws IllegalArgumentException {
         checkRep();
         if (!edgeExists(start, end)) {
             throw new IllegalArgumentException("Edge does not exist");
@@ -188,7 +194,6 @@ public class DLGraph {
                 }
             }
         }
-
     }
 
 }

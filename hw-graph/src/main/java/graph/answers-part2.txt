@@ -47,11 +47,17 @@ serves its purpose well in that field compared to the other implementations.
 1. Describe any new tests you added and why you added them, or why you feel that your original
 tests alone are sufficient.
 
+- Removed some original tests and rewrote incorrect tests
+
+I didn't add any more tests because I didn't add more methods for DLGraph and
+thought that my original test suite covered most situations well due to the limited amount of
+functionality the graph originally provided (adding nodes/edges and viewing state of graph).
 
 
 
 2. Did you make any changes to your specifications as you were implementing your Graph? (yes/no)
 If yes, describe your changes and why you made them.
 
-
+I added additional requirements for the data that is stored in the nodes to not be
+null to prevent methods from returning a null and to prevent NullPointerExceptions.
 
