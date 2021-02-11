@@ -40,11 +40,17 @@ I chose the adjacency list because the runtime complexities for the operations I
 1. Describe any new tests you added and why you added them, or why you feel that your original
 tests alone are sufficient.
 
+I removed some tests due to spec changes that tested behavior that was prevented
+by the precondition (@spec.requires). I felt that my original test suite was enough
+because I didn't add any new methods and all the specifications of the methods were
+covered.
 
 
 
 2. Did you make any changes to your specifications as you were implementing your Graph? (yes/no)
 If yes, describe your changes and why you made them.
 
-
+For any method specifications I changed that involved throw, I either made them return
+a boolean for if it was able to execute properly, or replaced it with a requires clause
+instead. This is so I didn't have to handle exceptions that I created.
 
