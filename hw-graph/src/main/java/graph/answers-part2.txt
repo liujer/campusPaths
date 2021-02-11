@@ -24,12 +24,13 @@ C: In an adjacency matrix, adding a vertex occurs in O(|V|^2), which is extremel
 edges would occur in O(1).
 
 
-
 2. In two to three sentences, describe the representation you chose and explain why you
 chose it. If you chose to use a different representation than one of the three we described
 above, be sure to list its advantages and disadvantages, too.
+
 I chose the adjacency list because the runtime complexities for the operations I need
 (adding and lookup) are faster than the other implementations.
+
 
 ## Section 4
 ###########################################################################
