@@ -16,15 +16,20 @@ A few examples of possible Graph representations:
 representations listed above (for example, in terms of runtime complexity, space
 complexity, or ease of implementation).
 
+A: Adding edges would occur in O(1) and looking up edges would occur in O(|V|) (v = number of vertices) runtime, which is
+slow in this case.
+B: In an adjacency list, looking up edges and adding edges would occur in O(1). A disadvantage of
+the adjaceny list is that removing edges would occur in O(|V|) (v = number of vertices).
+C: In an adjacency matrix, adding a vertex occurs in O(|V|^2), which is extremely slow. However, adding
+edges would occur in O(1).
 
 
 
 2. In two to three sentences, describe the representation you chose and explain why you
 chose it. If you chose to use a different representation than one of the three we described
 above, be sure to list its advantages and disadvantages, too.
-
-
-
+I chose the adjacency list because the runtime complexities for the operations I need
+(adding and lookup) are faster than the other implementations.
 
 ## Section 4
 ###########################################################################
