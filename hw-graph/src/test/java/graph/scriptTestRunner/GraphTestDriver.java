@@ -77,7 +77,7 @@ public class GraphTestDriver {
     /**
      * String -> Graph: maps the names of graphs to the actual graph
      **/
-    private final Map<String, DLGraph> graphs = new HashMap<String, DLGraph>();
+    private Map<String, DLGraph> graphs = new HashMap<>();
     private final PrintWriter output;
     private final BufferedReader input;
 
@@ -215,7 +215,7 @@ public class GraphTestDriver {
 
     private void listNodes(String graphName) {
         DLGraph temp = graphs.get(graphName);
-        List <String> result = temp.listNodes();
+        List<String> result = temp.listNodes();
         Collections.sort(result);
         output.print("ListNodes of " + graphName + " output:");
         for (String s : result) {
@@ -236,18 +236,13 @@ public class GraphTestDriver {
 
     private void listChildren(String graphName, String parentName) {
         DLGraph temp = graphs.get(graphName);
-        try {
-            List<String> result = temp.listChildren(parentName);
-            Collections.sort(result);
-            output.print("ListChildren of " + parentName + " in " + graphName + " output:");
-            for (String s : result) {
-                output.print(" " + s);
-            }
-            output.println();
-        } catch (IllegalArgumentException e) {
-            output.println(parentName + " does not exist in graph " + graphName);
+        List<String> result = temp.listChildren(parentName);
+        Collections.sort(result);
+        output.print("ListChildren of " + parentName +" in " + graphName + " output:");
+        for (String s : result) {
+            output.print(" " + s);
         }
-
+        output.println();
     }
 
     /**

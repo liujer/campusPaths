@@ -1,3 +1,0 @@
-# Tests listing of children of a missing parent node
-CreateGraph C
-ListChildren C one
