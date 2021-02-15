@@ -11,10 +11,13 @@
 
 package marvel;
 
+import com.opencsv.bean.CsvToBeanBuilder;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Iterator;
 
 /**
  * Parser utility to load the Marvel Comics dataset.
@@ -28,8 +31,7 @@ public class MarvelParser {
      * @param filename the file that will be read
      * @spec.requires filename is a valid file in the resources/data folder.
      */
-    // TODO: Replace 'void' with the type you want the parser to produce
-    public static void parseData(String filename) {
+    public static Iterator<MarvelModel> parseData(String filename) {
         // You can use this code as an example for getting a file from the resources folder
         // in a project like this. If you access TSV files elsewhere in your code, you'll need
         // to use similar code. If you use this code elsewhere, don't forget:
@@ -49,7 +51,13 @@ public class MarvelParser {
         }
         Reader reader = new BufferedReader(new InputStreamReader(stream));
 
-        // TODO: Complete this method
-        // Hint: You might want to create a new bean class to use with the OpenCSV Parser
+        Iterator<MarvelModel> csvMarvelIterator =
+                new CsvToBeanBuilder<MarvelModel>(reader) // set input
+                        .withType(MarvelModel.class) // set entry type
+                        .withSeparator('\t') // , for CSV
+                                .withIgnoreLeadingWhiteSpace(true)
+                                .build() // returns a CsvToBean<MarvelModel>
+                                .iterator();
+        return csvMarvelIterator;
     }
 }
