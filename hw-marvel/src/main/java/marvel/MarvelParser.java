@@ -17,7 +17,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * Parser utility to load the Marvel Comics dataset.
@@ -52,12 +52,16 @@ public class MarvelParser {
         Reader reader = new BufferedReader(new InputStreamReader(stream));
 
         Iterator<MarvelModel> csvMarvelIterator =
-                new CsvToBeanBuilder<MarvelModel>(reader) // set input
-                        .withType(MarvelModel.class) // set entry type
-                        .withSeparator('\t') // , for CSV
+                new CsvToBeanBuilder<MarvelModel>(reader)
+                        .withType(MarvelModel.class)
+                        .withSeparator('\t')
                                 .withIgnoreLeadingWhiteSpace(true)
-                                .build() // returns a CsvToBean<MarvelModel>
+                                .build()
                                 .iterator();
         return csvMarvelIterator;
     }
+
+
+
+
 }

@@ -83,6 +83,29 @@ public class DLGraph {
     }
 
     /**
+     * Adds an edge connecting two nodes to the graph in both directions
+     * @param nodeOne Represents the one of the nodes in the edge
+     * @param nodeTwo Represents the other node in the edge
+     * @param label Represents the label associated with the edge
+     * @spec.requires start and end must be existing nodes in the graph
+     * and there is not already an identical edge existing between start and end
+     * such that the labels and start/end nodes are identical. Additionally,
+     * none of the parameters are null.
+     * @spec.effects An edge from start pointing to end and an edge
+     * pointing from end to start is added to the graph with
+     * a corresponding label
+     */
+    public void addUndirectedEdge(String nodeOne, String nodeTwo, String label) {
+        checkRep();
+        List<DLEdge> nodeOneEdges = dlgraph.get(nodeOne);
+        List<DLEdge> nodeTwoEdges = dlgraph.get(nodeTwo);
+        nodeOneEdges.add(new DLEdge(nodeTwo, label));
+        nodeTwoEdges.add(new DLEdge(nodeOne, label));
+        checkRep();
+    }
+
+
+    /**
      * Returns all nodes in the graph
      * @return list of nodes contained in the graph
      * in order of the node data
@@ -96,7 +119,7 @@ public class DLGraph {
      * Returns all children of a particular node
      * @param data Represents the data of the parent node
      * @return a list of nodes where there is an edge directed
-     * from the parent node in the graph in order of node data
+     * from the parent node in the graph
      * @spec.requires data exists in graph as a node and data
      * is not null
      */
@@ -104,7 +127,9 @@ public class DLGraph {
         checkRep();
         List<String> result = new ArrayList<>();
         for (DLEdge edge : dlgraph.get(data)) {
-            result.add(edge.getDest());
+            if (!result.contains(edge.getDest())) {
+                result.add(edge.getDest());
+            }
         }
         checkRep();
         return result;
@@ -145,12 +170,13 @@ public class DLGraph {
      * @spec.requires start and end must be nodes in the graph, and start
      * and end must not be null
      */
-    public List<String> getLabel(String start, String end) {
+    public List<String> getLabels(String start, String end) {
         checkRep();
         List<String> result = new ArrayList<>();
         for (DLEdge edge : dlgraph.get(start)) {
-            if (edge.getLabel().equals(end))
-            result.add(edge.getLabel());
+            if (edge.getDest().equals(end)) {
+                result.add(edge.getLabel());
+            }
         }
         checkRep();
         return result;
@@ -163,7 +189,7 @@ public class DLGraph {
                 assert (start != null) : "node is null";
                 List<DLEdge> edges = dlgraph.get(start);
                 assert (edges != null) : "list of edges in " + start + " is null";
-                Collections.sort(edges, Comparator.comparing(dlEdge -> dlEdge.getDest()));
+                Collections.sort(edges, Comparator.comparing(DLEdge::getDest));
                 for (DLEdge edge: edges) {
                     assert (edge != null) : "edge is null";
                 }

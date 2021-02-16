@@ -8,9 +8,9 @@ Added edge e12 to A
 Added edge e23 to A
 Added edge e31 to A
 ListNodes of A output: one three two
-ListChildren of one in A output: two
-ListChildren of two in A output: three
-ListChildren of three in A output: one
+the children of one in A are: two(e12)
+the children of two in A are: three(e23)
+the children of three in A are: one(e31)
 
 
 

@@ -238,9 +238,13 @@ public class GraphTestDriver {
         DLGraph temp = graphs.get(graphName);
         List<String> result = temp.listChildren(parentName);
         Collections.sort(result);
-        output.print("ListChildren of " + parentName +" in " + graphName + " output:");
+        output.print("the children of " + parentName +" in " + graphName + " are:");
         for (String s : result) {
-            output.print(" " + s);
+            List<String> labels = temp.getLabels(parentName, s);
+            Collections.sort(labels);
+            for (String label : labels) {
+                output.print(" " + s + "(" + label + ")");
+            }
         }
         output.println();
     }

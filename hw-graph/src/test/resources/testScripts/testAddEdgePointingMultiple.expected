@@ -7,6 +7,6 @@ Added node three to D
 Added edge e12 to D
 Added edge e13 to D
 ListNodes of D output: one three two
-ListChildren of one in D output: three two
-ListChildren of two in D output:
-ListChildren of three in D output:
+the children of one in D are: three(e13) two(e12)
+the children of two in D are:
+the children of three in D are:

@@ -6,6 +6,6 @@ Added node two to B
 Added node three to B
 Added edge e12 to B
 Added edge e32 to B
-ListChildren of one in B output: two
-ListChildren of two in B output:
-ListChildren of three in B output: two
+the children of one in B are: two(e12)
+the children of two in B are:
+the children of three in B are: two(e32)

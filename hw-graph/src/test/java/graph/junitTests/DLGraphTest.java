@@ -28,12 +28,12 @@ public class DLGraphTest {
     public void testGetLabel() {
         List<String> expected = new ArrayList<>();
         expected.add("e12");
-        assertEquals(expected, twoNodeGraph.getLabel("one", "two"));
+        assertEquals(expected, twoNodeGraph.getLabels("one", "two"));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testGetMissingLabel() {
-        twoNodeGraph.getLabel("two", "one");
+        twoNodeGraph.getLabels("two", "one");
     }
 
     @Test

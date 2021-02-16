@@ -4,24 +4,23 @@ import com.opencsv.bean.CsvBindByName;
 
 public class MarvelModel {
     @CsvBindByName
-    private String character;
-
+    private String hero;
     @CsvBindByName
     private String book;
 
-    public String getCharacter() {
-        return this.character;
+    public String getHero() {
+        return hero;
     }
 
-    public void setCharacter(String character) {
-        this.character = character;
+    public void setHero(String newHero) {
+        this.hero = newHero;
     }
 
     public String getBook() {
-        return this.book;
+        return book;
     }
 
-    public void setBook(String book) {
-        this.book = book;
+    public void setBook(String newBook) {
+        this.book = newBook;
     }
 }

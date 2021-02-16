@@ -6,5 +6,5 @@ Added node two to B
 Added edge e12 to B
 Added edge e21 to B
 ListNodes of B output: one two
-ListChildren of one in B output: two
-ListChildren of two in B output: one
+the children of one in B are: two(e12)
+the children of two in B are: one(e21)
