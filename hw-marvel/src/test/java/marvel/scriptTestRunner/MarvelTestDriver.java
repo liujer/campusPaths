@@ -226,7 +226,7 @@ public class MarvelTestDriver {
 
     private void findPath(List<String> arguments) {
         if (arguments.size() != 3) {
-            throw new CommandException("Bad arguments to AddEdge: " + arguments);
+            throw new CommandException("Bad arguments to FindPath: " + arguments);
         }
 
         String graphName = arguments.get(0);

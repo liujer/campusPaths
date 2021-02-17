@@ -161,7 +161,7 @@ public class GraphTestDriver {
 
     private void createGraph(String graphName) {
         graphs.put(graphName, new DLGraph());
-        output.println("Created graph " + graphName);
+        output.println("created graph " + graphName);
     }
 
     private void addNode(List<String> arguments) {
@@ -178,7 +178,7 @@ public class GraphTestDriver {
     private void addNode(String graphName, String nodeName) {
         DLGraph temp = graphs.get(graphName);
         if (temp.addNode(nodeName)) {
-            output.println("Added node " + nodeName + " to " + graphName);
+            output.println("added node " + nodeName + " to " + graphName);
         } else {
             output.println("Could not add node " + nodeName + " to " + graphName);
         }
@@ -201,7 +201,7 @@ public class GraphTestDriver {
                          String edgeLabel) {
         DLGraph temp = graphs.get(graphName);
         temp.addEdge(parentName, childName, edgeLabel);
-        output.println("Added edge " + edgeLabel + " to " + graphName);
+        output.println("added edge " + edgeLabel + " from " + parentName + " to " +childName + " in " + graphName);
     }
 
     private void listNodes(List<String> arguments) {
@@ -217,7 +217,7 @@ public class GraphTestDriver {
         DLGraph temp = graphs.get(graphName);
         List<String> result = temp.listNodes();
         Collections.sort(result);
-        output.print("ListNodes of " + graphName + " output:");
+        output.print(graphName + " contains:");
         for (String s : result) {
             output.print(" " + s);
         }
