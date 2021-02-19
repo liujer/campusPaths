@@ -3,6 +3,7 @@ package marvel;
 import com.opencsv.bean.CsvBindByName;
 
 public class MarvelModel {
+
     @CsvBindByName
     private String hero;
     @CsvBindByName
@@ -23,4 +24,5 @@ public class MarvelModel {
     public void setBook(String newBook) {
         this.book = newBook;
     }
+
 }

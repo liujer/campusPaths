@@ -257,7 +257,7 @@ public class MarvelTestDriver {
             if (!temp.nodeExists(newNode_a)) {
                 output.println("unknown character " + node_a);
             }
-            if (!temp.nodeExists(newNode_a)) {
+            if (!temp.nodeExists(newNode_b)) {
                 output.println("unknown character " + node_b);
             }
         }

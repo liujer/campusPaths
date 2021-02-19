@@ -1,0 +1,8 @@
+# Tests if findPath can actually find the shortest path rather
+# than any path
+
+LoadGraph testShortest testTSV.tsv
+
+FindPath testShortest one four
+
+FindPath testShortest four one

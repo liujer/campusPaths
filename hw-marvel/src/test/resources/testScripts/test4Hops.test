@@ -1,0 +1,7 @@
+# Tests if path can be found in four hops between two
+# nodes
+LoadGraph testFour testTSV.tsv
+
+FindPath testFour one seven
+
+FindPath testFour seven one

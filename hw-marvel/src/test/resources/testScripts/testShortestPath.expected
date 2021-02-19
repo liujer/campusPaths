@@ -1,0 +1,10 @@
+# Tests if findPath can actually find the shortest path rather
+# than any path
+
+loaded graph testShortest
+
+path from one to four:
+one to four via e14
+
+path from four to one:
+four to one via e14

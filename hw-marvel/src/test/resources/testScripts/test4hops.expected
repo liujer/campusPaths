@@ -1,0 +1,15 @@
+# Tests if path can be found in four hops between two
+# nodes
+loaded graph testFour
+
+path from one to seven:
+one to two via e12
+two to five via e25
+five to six via e56
+six to seven via e67
+
+path from seven to one:
+seven to six via e67
+six to five via e56
+five to two via e25
+two to one via e12
