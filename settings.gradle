@@ -4,3 +4,5 @@ include 'hw-setup'
 include 'hw-poly'
 include 'hw-graph'
 include 'hw-marvel'
+include 'hw-pathfinder'
+
