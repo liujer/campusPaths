@@ -9,11 +9,11 @@ import java.util.*;
 
 public class DLGraph<N, E> {
     // Fields
-    private Map <N, List<DLEdge<N, E>>> dlgraph;
+    private Map <N, List<DLEdge>> dlgraph;
     private final static boolean DEBUG = false;
 
 
-    private class DLEdge<N, E> {
+    private class DLEdge {
         private N dest;
         private E label;
         public DLEdge(N dest, E label) {
@@ -78,8 +78,8 @@ public class DLGraph<N, E> {
      */
     public void addEdge(N start, N end, E label) {
         checkRep();
-        List<DLEdge<N, E>> temp = dlgraph.get(start);
-        temp.add(new DLEdge<>(end, label));
+        List<DLEdge> temp = dlgraph.get(start);
+        temp.add(new DLEdge(end, label));
         checkRep();
     }
 
@@ -98,10 +98,10 @@ public class DLGraph<N, E> {
      */
     public void addUndirectedEdge(N nodeOne, N nodeTwo, E label) {
         checkRep();
-        List<DLEdge<N, E>> nodeOneEdges = dlgraph.get(nodeOne);
-        List<DLEdge<N, E>> nodeTwoEdges = dlgraph.get(nodeTwo);
-        nodeOneEdges.add(new DLEdge<>(nodeTwo, label));
-        nodeTwoEdges.add(new DLEdge<>(nodeOne, label));
+        List<DLEdge> nodeOneEdges = dlgraph.get(nodeOne);
+        List<DLEdge> nodeTwoEdges = dlgraph.get(nodeTwo);
+        nodeOneEdges.add(new DLEdge(nodeTwo, label));
+        nodeTwoEdges.add(new DLEdge(nodeOne, label));
         checkRep();
     }
 
@@ -127,7 +127,7 @@ public class DLGraph<N, E> {
     public List<N> listChildren(N data) {
         checkRep();
         List<N> result = new ArrayList<>();
-        for (DLEdge<N, E> edge : dlgraph.get(data)) {
+        for (DLEdge edge : dlgraph.get(data)) {
             if (!result.contains(edge.getDest())) {
                 result.add(edge.getDest());
             }
@@ -155,7 +155,7 @@ public class DLGraph<N, E> {
      */
     public boolean edgeExists(N start, N end) {
         checkRep();
-        for (DLEdge <N, E> edge : dlgraph.get(start)) {
+        for (DLEdge edge : dlgraph.get(start)) {
             if (edge.getDest().equals(end)) {
                 return true;
             }
@@ -174,7 +174,7 @@ public class DLGraph<N, E> {
     public List<E> getLabels(N start, N end) {
         checkRep();
         List<E> result = new ArrayList<>();
-        for (DLEdge<N, E> edge : dlgraph.get(start)) {
+        for (DLEdge edge : dlgraph.get(start)) {
             if (edge.getDest().equals(end)) {
                 result.add(edge.getLabel());
             }
@@ -188,15 +188,15 @@ public class DLGraph<N, E> {
             assert (dlgraph != null) : "graph is null";
             for (N start: dlgraph.keySet()) {
                 assert (start != null) : "node is null";
-                List<DLEdge<N, E>> edges = dlgraph.get(start);
+                List<DLEdge> edges = dlgraph.get(start);
                 assert (edges != null) : "list of edges in " + start + " is null";
-                for (DLEdge<N, E> edge: edges) {
+                for (DLEdge edge: edges) {
                     assert (edge != null) : "edge is null";
                 }
                 for (int i = 0; i < edges.size() - 1; i++) {
                     for (int j = i + 1; j < edges.size(); j++) {
-                        DLEdge<N, E> init = edges.get(i);
-                        DLEdge<N, E> compare = edges.get(j);
+                        DLEdge init = edges.get(i);
+                        DLEdge compare = edges.get(j);
                         if (init.getDest().equals(compare.getDest())) {
                             assert (!init.getLabel().equals(compare.getLabel())) : "duplicate edges";
                         }
