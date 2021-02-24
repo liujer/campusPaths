@@ -1,6 +1,6 @@
 # Tests adding duplicate nodes to a graph
-Created graph B
-Added node one to B
-Added node two to B
+created graph B
+added node one to B
+added node two to B
 Could not add node two to B
-ListNodes of B output: one two
+B contains: one two

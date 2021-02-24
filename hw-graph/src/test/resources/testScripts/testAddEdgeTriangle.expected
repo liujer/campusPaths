@@ -1,17 +1,16 @@
 # Tests adding of edges by using a three node graph and
 # connecting them in a triangle formation
-Created graph A
-Added node one to A
-Added node two to A
-Added node three to A
-Added edge e12 to A
-Added edge e23 to A
-Added edge e31 to A
-ListNodes of A output: one three two
+created graph A
+added node one to A
+added node two to A
+added node three to A
+added edge e12 from one to two in A
+added edge e23 from two to three in A
+added edge e31 from three to one in A
+A contains: one three two
 the children of one in A are: two(e12)
 the children of two in A are: three(e23)
 the children of three in A are: one(e31)
-
 
 
 

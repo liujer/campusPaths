@@ -1,12 +1,12 @@
 # Tests adding of edges by having one node point
 # to multiple nodes
-Created graph D
-Added node one to D
-Added node two to D
-Added node three to D
-Added edge e12 to D
-Added edge e13 to D
-ListNodes of D output: one three two
+created graph D
+added node one to D
+added node two to D
+added node three to D
+added edge e12 from one to two in D
+added edge e13 from one to three in D
+D contains: one three two
 the children of one in D are: three(e13) two(e12)
 the children of two in D are:
 the children of three in D are:

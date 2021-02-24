@@ -11,10 +11,10 @@ import static org.junit.Assert.*;
 public class DLGraphTest {
 
     // two node graph with one edge
-    private DLGraph twoNodeGraph;
+    private DLGraph<String, String> twoNodeGraph;
 
     public DLGraphTest() {
-        twoNodeGraph = new DLGraph();
+        twoNodeGraph = new DLGraph<>();
         twoNodeGraph.addNode("one");
         twoNodeGraph.addNode("two");
         twoNodeGraph.addEdge("one", "two", "e12");

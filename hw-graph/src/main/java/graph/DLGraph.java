@@ -7,22 +7,23 @@ import java.util.*;
 // - There can be any number of edges between two nodes
 // - No 2 edges with the same parent and child nodes will have the same edge label
 
-public class DLGraph {
+public class DLGraph<N, E> {
     // Fields
-    private Map <String, List<DLEdge>> dlgraph;
+    private Map <N, List<DLEdge<N, E>>> dlgraph;
     private final static boolean DEBUG = false;
 
-    private class DLEdge {
-        private String dest;
-        private String label;
-        public DLEdge(String dest, String label) {
+
+    private class DLEdge<N, E> {
+        private N dest;
+        private E label;
+        public DLEdge(N dest, E label) {
             this.dest = dest;
             this.label = label;
         }
-        public String getDest() {
+        public N getDest() {
             return dest;
         }
-        public String getLabel() {
+        public E getLabel() {
             return label;
         }
     }
@@ -53,7 +54,7 @@ public class DLGraph {
      * in graph, true if data is inserted
      * @spec.effects  a node with data is added to the graph
      */
-    public boolean addNode(String data) {
+    public boolean addNode(N data) {
         checkRep();
         if (data == null || dlgraph.containsKey(data)) {
             return false;
@@ -75,10 +76,10 @@ public class DLGraph {
      * @spec.effects An edge from start pointing to end is be added to the graph
      * with a corresponding label
      */
-    public void addEdge(String start, String end, String label) {
+    public void addEdge(N start, N end, E label) {
         checkRep();
-        List<DLEdge> temp = dlgraph.get(start);
-        temp.add(new DLEdge(end, label));
+        List<DLEdge<N, E>> temp = dlgraph.get(start);
+        temp.add(new DLEdge<>(end, label));
         checkRep();
     }
 
@@ -95,12 +96,12 @@ public class DLGraph {
      * pointing from end to start is added to the graph with
      * a corresponding label
      */
-    public void addUndirectedEdge(String nodeOne, String nodeTwo, String label) {
+    public void addUndirectedEdge(N nodeOne, N nodeTwo, E label) {
         checkRep();
-        List<DLEdge> nodeOneEdges = dlgraph.get(nodeOne);
-        List<DLEdge> nodeTwoEdges = dlgraph.get(nodeTwo);
-        nodeOneEdges.add(new DLEdge(nodeTwo, label));
-        nodeTwoEdges.add(new DLEdge(nodeOne, label));
+        List<DLEdge<N, E>> nodeOneEdges = dlgraph.get(nodeOne);
+        List<DLEdge<N, E>> nodeTwoEdges = dlgraph.get(nodeTwo);
+        nodeOneEdges.add(new DLEdge<>(nodeTwo, label));
+        nodeTwoEdges.add(new DLEdge<>(nodeOne, label));
         checkRep();
     }
 
@@ -110,7 +111,7 @@ public class DLGraph {
      * @return list of nodes contained in the graph
      * in order of the node data
      */
-    public List<String> listNodes() {
+    public List<N> listNodes() {
         checkRep();
         return new ArrayList<>(dlgraph.keySet());
     }
@@ -123,10 +124,10 @@ public class DLGraph {
      * @spec.requires data exists in graph as a node and data
      * is not null
      */
-    public List<String> listChildren(String data) {
+    public List<N> listChildren(N data) {
         checkRep();
-        List<String> result = new ArrayList<>();
-        for (DLEdge edge : dlgraph.get(data)) {
+        List<N> result = new ArrayList<>();
+        for (DLEdge<N, E> edge : dlgraph.get(data)) {
             if (!result.contains(edge.getDest())) {
                 result.add(edge.getDest());
             }
@@ -140,7 +141,7 @@ public class DLGraph {
      * @param data Represents the data of the node to look for
      * @return true if node is found in the graph
      */
-    public boolean nodeExists(String data) {
+    public boolean nodeExists(N data) {
         checkRep();
         return dlgraph.containsKey(data);
     }
@@ -152,9 +153,9 @@ public class DLGraph {
      * @return true if edge exists between start and end
      * @spec.requires start and end must be nodes in the graph
      */
-    public boolean edgeExists(String start, String end) {
+    public boolean edgeExists(N start, N end) {
         checkRep();
-        for (DLEdge edge : dlgraph.get(start)) {
+        for (DLEdge <N, E> edge : dlgraph.get(start)) {
             if (edge.getDest().equals(end)) {
                 return true;
             }
@@ -170,10 +171,10 @@ public class DLGraph {
      * @spec.requires start and end must be nodes in the graph, and start
      * and end must not be null
      */
-    public List<String> getLabels(String start, String end) {
+    public List<E> getLabels(N start, N end) {
         checkRep();
-        List<String> result = new ArrayList<>();
-        for (DLEdge edge : dlgraph.get(start)) {
+        List<E> result = new ArrayList<>();
+        for (DLEdge<N, E> edge : dlgraph.get(start)) {
             if (edge.getDest().equals(end)) {
                 result.add(edge.getLabel());
             }
@@ -185,19 +186,20 @@ public class DLGraph {
     private void checkRep() {
         if (DEBUG) {
             assert (dlgraph != null) : "graph is null";
-            for (String start: dlgraph.keySet()) {
+            for (N start: dlgraph.keySet()) {
                 assert (start != null) : "node is null";
-                List<DLEdge> edges = dlgraph.get(start);
+                List<DLEdge<N, E>> edges = dlgraph.get(start);
                 assert (edges != null) : "list of edges in " + start + " is null";
-                Collections.sort(edges, Comparator.comparing(DLEdge::getDest));
-                for (DLEdge edge: edges) {
+                for (DLEdge<N, E> edge: edges) {
                     assert (edge != null) : "edge is null";
                 }
                 for (int i = 0; i < edges.size() - 1; i++) {
-                    DLEdge prev = edges.get(i);
-                    DLEdge next = edges.get(i + 1);
-                    if (prev.getDest().equals(next.getDest())) {
-                        assert (!prev.getLabel().equals(next.getLabel())) : "duplicate edges";
+                    for (int j = i + 1; j < edges.size(); j++) {
+                        DLEdge<N, E> init = edges.get(i);
+                        DLEdge<N, E> compare = edges.get(j);
+                        if (init.getDest().equals(compare.getDest())) {
+                            assert (!init.getLabel().equals(compare.getLabel())) : "duplicate edges";
+                        }
                     }
                 }
             }

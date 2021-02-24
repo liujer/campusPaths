@@ -1,9 +1,9 @@
 # Tests adding of edges by using two nodes
 # that are in a line
-Created graph C
-Added node one to C
-Added node two to C
-Added edge e12 to C
-ListNodes of C output: one two
+created graph C
+added node one to C
+added node two to C
+added edge e12 from one to two in C
+C contains: one two
 the children of one in C are: two(e12)
 the children of two in C are:

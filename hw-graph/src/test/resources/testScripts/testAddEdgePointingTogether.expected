@@ -1,10 +1,10 @@
 # Tests adding of edges by using two nodes
 # that point to each other
-Created graph B
-Added node one to B
-Added node two to B
-Added edge e12 to B
-Added edge e21 to B
-ListNodes of B output: one two
+created graph B
+added node one to B
+added node two to B
+added edge e12 from one to two in B
+added edge e21 from two to one in B
+B contains: one two
 the children of one in B are: two(e12)
 the children of two in B are: one(e21)

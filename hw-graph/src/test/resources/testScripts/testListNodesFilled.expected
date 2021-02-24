@@ -1,7 +1,7 @@
 # Tests the method listNodes in DLGraph by adding
 # nodes to graphs and checking if nodes are outputted
 # correctly
-Created graph A
-Added node one to A
-Added node two to A
-ListNodes of A output: one two
+created graph A
+added node one to A
+added node two to A
+A contains: one two

@@ -77,7 +77,7 @@ public class GraphTestDriver {
     /**
      * String -> Graph: maps the names of graphs to the actual graph
      **/
-    private Map<String, DLGraph> graphs = new HashMap<>();
+    private Map<String, DLGraph<String, String>> graphs = new HashMap<>();
     private final PrintWriter output;
     private final BufferedReader input;
 
@@ -160,7 +160,7 @@ public class GraphTestDriver {
     }
 
     private void createGraph(String graphName) {
-        graphs.put(graphName, new DLGraph());
+        graphs.put(graphName, new DLGraph<>());
         output.println("created graph " + graphName);
     }
 
@@ -176,7 +176,7 @@ public class GraphTestDriver {
     }
 
     private void addNode(String graphName, String nodeName) {
-        DLGraph temp = graphs.get(graphName);
+        DLGraph<String, String> temp = graphs.get(graphName);
         if (temp.addNode(nodeName)) {
             output.println("added node " + nodeName + " to " + graphName);
         } else {
@@ -199,7 +199,7 @@ public class GraphTestDriver {
 
     private void addEdge(String graphName, String parentName, String childName,
                          String edgeLabel) {
-        DLGraph temp = graphs.get(graphName);
+        DLGraph<String, String> temp = graphs.get(graphName);
         temp.addEdge(parentName, childName, edgeLabel);
         output.println("added edge " + edgeLabel + " from " + parentName + " to " +childName + " in " + graphName);
     }
@@ -214,7 +214,7 @@ public class GraphTestDriver {
     }
 
     private void listNodes(String graphName) {
-        DLGraph temp = graphs.get(graphName);
+        DLGraph<String, String> temp = graphs.get(graphName);
         List<String> result = temp.listNodes();
         Collections.sort(result);
         output.print(graphName + " contains:");
@@ -235,7 +235,7 @@ public class GraphTestDriver {
     }
 
     private void listChildren(String graphName, String parentName) {
-        DLGraph temp = graphs.get(graphName);
+        DLGraph<String, String> temp = graphs.get(graphName);
         List<String> result = temp.listChildren(parentName);
         Collections.sort(result);
         output.print("the children of " + parentName +" in " + graphName + " are:");

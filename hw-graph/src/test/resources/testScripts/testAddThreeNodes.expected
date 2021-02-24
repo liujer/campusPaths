@@ -1,6 +1,6 @@
 # Tests adding three nodes to a directed graph
-Created graph A
-Added node one to A
-Added node two to A
-Added node three to A
-ListNodes of A output: one three two
+created graph A
+added node one to A
+added node two to A
+added node three to A
+A contains: one three two
