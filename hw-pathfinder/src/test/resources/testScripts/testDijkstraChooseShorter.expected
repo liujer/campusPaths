@@ -1,0 +1,14 @@
+# Tests if Dijkstra's algorithm will choose the shorter path
+# in terms of number of nodes in the path
+created graph A
+added node one to A
+added node two to A
+added node three to A
+
+added edge 1.000 from one to two in A
+added edge 1.000 from two to three in A
+added edge 1.000 from one to three in A
+
+path from one to three:
+one to three with weight 1.000
+total cost: 1.000

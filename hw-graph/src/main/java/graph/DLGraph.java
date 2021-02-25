@@ -8,14 +8,15 @@ import java.util.*;
 // - No 2 edges with the same parent and child nodes will have the same edge label
 
 public class DLGraph<N, E> {
+    // N represents what data type the nodes will represent
+    // E represents what data type a label between edges will represent
     // Fields
-    private Map <N, List<DLEdge>> dlgraph;
+    private final Map <N, List<DLEdge>> dlgraph;
     private final static boolean DEBUG = false;
 
-
     private class DLEdge {
-        private N dest;
-        private E label;
+        private final N dest;
+        private final E label;
         public DLEdge(N dest, E label) {
             this.dest = dest;
             this.label = label;

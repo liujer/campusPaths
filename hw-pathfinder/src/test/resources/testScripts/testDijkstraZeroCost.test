@@ -1,0 +1,6 @@
+# Tests if path from a node to itself is zero
+# using Dijkstra's algorithm
+CreateGraph A
+AddNode A one
+
+FindPath A one one

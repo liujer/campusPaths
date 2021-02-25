@@ -1,0 +1,8 @@
+# Tests the case where the nodes do not exist in graph
+CreateGraph A
+AddNode A one
+AddNode A two
+
+AddEdge A one two 2
+
+FindPath A one three

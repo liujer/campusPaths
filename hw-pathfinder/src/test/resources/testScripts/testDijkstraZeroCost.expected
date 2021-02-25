@@ -1,0 +1,7 @@
+# Tests if path from a node to itself is zero
+# using Dijkstra's algorithm
+created graph A
+added node one to A
+
+path from one to one:
+total cost: 0.000

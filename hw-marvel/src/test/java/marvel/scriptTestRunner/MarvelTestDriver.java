@@ -27,7 +27,7 @@ public class MarvelTestDriver {
     /**
      * String -> Graph: maps the names of graphs to the actual graph
      **/
-    private Map<String, DLGraph> graphs = new HashMap<>();
+    private Map<String, DLGraph<String, String>> graphs = new HashMap<>();
     private final PrintWriter output;
     private final BufferedReader input;
 
@@ -117,7 +117,7 @@ public class MarvelTestDriver {
     }
 
     private void createGraph(String graphName) {
-        graphs.put(graphName, new DLGraph());
+        graphs.put(graphName, new DLGraph<>());
         output.println("created graph " + graphName);
     }
 
@@ -133,7 +133,7 @@ public class MarvelTestDriver {
     }
 
     private void addNode(String graphName, String nodeName) {
-        DLGraph temp = graphs.get(graphName);
+        DLGraph<String, String> temp = graphs.get(graphName);
         if (temp.addNode(nodeName)) {
             output.println("added node " + nodeName + " to " + graphName);
         } else {
@@ -156,7 +156,7 @@ public class MarvelTestDriver {
 
     private void addEdge(String graphName, String parentName, String childName,
                          String edgeLabel) {
-        DLGraph temp = graphs.get(graphName);
+        DLGraph<String, String> temp = graphs.get(graphName);
         temp.addEdge(parentName, childName, edgeLabel);
         output.println("added edge " + edgeLabel + " from " + parentName + " to " + childName + " in " + graphName);
     }
@@ -171,7 +171,7 @@ public class MarvelTestDriver {
     }
 
     private void listNodes(String graphName) {
-        DLGraph temp = graphs.get(graphName);
+        DLGraph<String, String> temp = graphs.get(graphName);
         List<String> result = temp.listNodes();
         Collections.sort(result);
         output.print("ListNodes of " + graphName + " output:");
@@ -192,7 +192,7 @@ public class MarvelTestDriver {
     }
 
     private void listChildren(String graphName, String parentName) {
-        DLGraph temp = graphs.get(graphName);
+        DLGraph<String, String> temp = graphs.get(graphName);
         List<String> result = temp.listChildren(parentName);
         Collections.sort(result);
         output.print("the children of " + parentName +" in " + graphName + " are:");
@@ -218,7 +218,7 @@ public class MarvelTestDriver {
     }
 
     private void loadGraph(String graphName, String fileName) {
-        DLGraph temp = new DLGraph();
+        DLGraph<String, String> temp = new DLGraph<>();
         MarvelPaths.loadIntoGraph(temp, fileName);
         graphs.put(graphName, temp);
         output.println("loaded graph " + graphName);
@@ -237,7 +237,7 @@ public class MarvelTestDriver {
     }
 
     private void findPath(String graphName, String node_a, String node_b) {
-        DLGraph temp = graphs.get(graphName);
+        DLGraph<String, String> temp = graphs.get(graphName);
         String newNode_a = node_a.replace('_', ' ');
         String newNode_b = node_b.replace('_', ' ');
         if (temp.nodeExists(newNode_a) && temp.nodeExists(newNode_b)) {

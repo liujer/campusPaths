@@ -1,0 +1,15 @@
+# Find a path using Dijkstra's algorithm when there are two paths
+# with identical weight
+# Should add based on when node was first added
+CreateGraph A
+AddNode A one
+AddNode A two
+AddNode A three
+AddNode A four
+
+AddEdge A one two 2
+AddEdge A one three 2
+AddEdge A two four 1
+AddEdge A three four 1
+
+FindPath A one four

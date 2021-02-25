@@ -1,0 +1,11 @@
+# Attempt to find a path that does not exist with Dijkstra's
+# algorithm
+created graph A
+added node one to A
+added node two to A
+added node three to A
+
+added edge 2.000 from one to two in A
+
+path from one to three:
+no path found

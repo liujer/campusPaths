@@ -1,0 +1,10 @@
+# Attempt to find a path that does not exist with Dijkstra's
+# algorithm
+CreateGraph A
+AddNode A one
+AddNode A two
+AddNode A three
+
+AddEdge A one two 2
+
+FindPath A one three

@@ -31,11 +31,6 @@ public class DLGraphTest {
         assertEquals(expected, twoNodeGraph.getLabels("one", "two"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testGetMissingLabel() {
-        twoNodeGraph.getLabels("two", "one");
-    }
-
     @Test
     public void testNodeExists() {
         assertTrue(twoNodeGraph.nodeExists("one"));

@@ -1,0 +1,18 @@
+# Find a path using Dijkstra's algorithm when there are two paths
+# with identical weight
+# Should add based on when node was first added
+created graph A
+added node one to A
+added node two to A
+added node three to A
+added node four to A
+
+added edge 2.000 from one to two in A
+added edge 2.000 from one to three in A
+added edge 1.000 from two to four in A
+added edge 1.000 from three to four in A
+
+path from one to four:
+one to two with weight 2.000
+two to four with weight 1.000
+total cost: 3.000

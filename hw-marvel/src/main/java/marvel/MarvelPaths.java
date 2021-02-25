@@ -15,7 +15,7 @@ public class MarvelPaths {
     // Abs. function and rep. invariant would go here
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        DLGraph marvelGraph = new DLGraph();
+        DLGraph<String, String> marvelGraph = new DLGraph<>();
         MarvelPaths.loadIntoGraph(marvelGraph, marvelFile);
 
         System.out.println("Enter the starting point/hero name: ");
@@ -71,7 +71,7 @@ public class MarvelPaths {
      * every hero with the same book as another hero will have edges connecting
      * both ways between the heroes with the label as the same book
      */
-    public static void loadIntoGraph(DLGraph marvelGraph, String fileName) {
+    public static void loadIntoGraph(DLGraph<String, String> marvelGraph, String fileName) {
         Iterator<MarvelModel> modelItr = MarvelParser.parseData(fileName);
         Map<String, List<String>> trackedBooks = new HashMap<>();
         while (modelItr.hasNext()) {
@@ -97,7 +97,7 @@ public class MarvelPaths {
      * @return a list of Strings/node names in order of visiting in
      * shortest path
      */
-    public static List<String> findPath(DLGraph graph, String start, String dest) {
+    public static List<String> findPath(DLGraph<String, String> graph, String start, String dest) {
         LinkedList<String> nodeQueue = new LinkedList<>();
         Map<String, List<String>> nodesToPaths = new HashMap<>();
         nodeQueue.add(start);

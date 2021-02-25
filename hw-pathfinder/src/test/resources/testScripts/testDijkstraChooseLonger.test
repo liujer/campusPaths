@@ -1,0 +1,12 @@
+# Tests if Dijkstra's algorithm will choose the longer path
+# in terms of number of nodes in the path
+CreateGraph A
+AddNode A one
+AddNode A two
+AddNode A three
+
+AddEdge A one two 1
+AddEdge A two three 1
+AddEdge A one three 3
+
+FindPath A one three

@@ -1,0 +1,8 @@
+# Tests the case where the nodes do not exist in graph
+created graph A
+added node one to A
+added node two to A
+
+added edge 2.000 from one to two in A
+
+unknown node three
