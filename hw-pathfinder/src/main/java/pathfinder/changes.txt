@@ -1,4 +1,4 @@
 Briefly list any changes you made to your graph class during hw-pathfinder, and why you made those changes.
 
 - Changed one check in checkRep() to find duplicate edge in O(n^2) rather
-than O(nlog(n))
+than O(nlog(n)) due to generic type

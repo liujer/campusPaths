@@ -5,6 +5,9 @@ import pathfinder.datastructures.Path;
 
 import java.util.*;
 
+/**
+ * Utility class for CampusMap for finding shortest path in a graph
+ */
 public class CampusMapUtility {
 
     // An abstraction function/rep invariant would go here
@@ -48,8 +51,10 @@ public class CampusMapUtility {
                     active.add(newPath);
                 }
             }
+            // node is checked, add to finished
             finished.add(minDest);
         }
+        // if loop terminates, a path was not found
         return null;
     }
 }

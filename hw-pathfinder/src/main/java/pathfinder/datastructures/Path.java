@@ -21,7 +21,7 @@ import java.util.List;
  * version of the total cost along this path, for efficient repeated access.
  */
 public class Path<T> implements Iterable<Path<T>.Segment> {
-    // T represents what data type every point in the graph will represent
+    // T represents what data type every point/node in the graph will represent
 
     // AF(this) =
     //      first point in the path => start
