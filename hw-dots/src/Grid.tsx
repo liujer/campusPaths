@@ -94,6 +94,10 @@ class Grid extends Component<GridProps, GridState> {
      */
     getCoordinates = (): [number, number][] => {
         // A hardcoded 4x4 grid. Probably not going to work when we change the grid size...
+        let coords = [];
+        for (let i = 0; i < this.props.size; i++) {
+            for
+        }
         return [
             [100, 100], [100, 200], [100, 300], [100, 400],
             [200, 100], [200, 200], [200, 300], [200, 400],
@@ -116,7 +120,7 @@ class Grid extends Component<GridProps, GridState> {
         return (
             <div id="grid">
                 <canvas ref={this.canvasReference} width={this.props.width} height={this.props.height}/>
-                <p>Current Grid Size: 4</p>
+                <p>Current Grid Size: {this.props.size}</p>
             </div>
         );
     }
