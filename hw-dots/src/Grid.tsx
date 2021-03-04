@@ -15,6 +15,8 @@ interface GridProps {
     size: number;    // size of the grid to display
     width: number;   // width of the canvas on which to draw
     height: number;  // height of the canvas on which to draw
+    edges: [[number, number], [number, number], string][]; // all edges as string in format "x1,y1 x2,y2 COLOR"
+                    // separated by newline
 }
 
 interface GridState {
@@ -33,7 +35,7 @@ class Grid extends Component<GridProps, GridState> {
     constructor(props: GridProps) {
         super(props);
         this.state = {
-            backgroundImage: null  // An image object to render into the canvas.
+            backgroundImage: null,  // An image object to render into the canvas.
         };
         this.canvasReference = React.createRef();
     }
@@ -86,6 +88,12 @@ class Grid extends Component<GridProps, GridState> {
         for (let coordinate of coordinates) {
             this.drawCircle(ctx, coordinate);
         }
+
+        // Draw all edges
+        for (let edge of this.props.edges) {
+            this.drawLine(ctx, edge);
+        }
+
     };
 
     /**
@@ -95,7 +103,7 @@ class Grid extends Component<GridProps, GridState> {
     getCoordinates = () : [number, number][]=> {
         // A hardcoded 4x4 grid. Probably not going to work when we change the grid size...
         let coords: [number, number][] = [];
-        let increment = 500 / (this.props.size + 1);
+        let increment = this.props.width / (this.props.size + 1);
         for (let i = 0; i < this.props.size; i++) {
             for (let j = 0; j < this.props.size; j++) {
                 coords.push([(i + 1) * increment, (j + 1) * increment]);
@@ -114,6 +122,20 @@ class Grid extends Component<GridProps, GridState> {
         ctx.fill();
     };
 
+    drawLine = (ctx: CanvasRenderingContext2D, edge: [[number, number],
+        [number, number], string]) => {
+        const thickness = Math.min(4, 100 / this.props.size);
+        const widthBetweenDots = this.props.width / (this.props.size + 1);
+        ctx.strokeStyle = edge[2];
+        ctx.lineWidth = thickness;
+
+        ctx.beginPath();
+        ctx.moveTo((edge[0][0] + 1)* widthBetweenDots, (edge[0][1] + 1) * widthBetweenDots);
+        ctx.lineTo((edge[1][0] + 1) * widthBetweenDots, (edge[1][1] + 1) * widthBetweenDots);
+        ctx.stroke();
+    };
+
+
     render() {
         return (
             <div id="grid">
@@ -121,7 +143,7 @@ class Grid extends Component<GridProps, GridState> {
                 <p>Current Grid Size: {this.props.size}</p>
             </div>
         );
-    }
+    };
 }
 
 export default Grid;

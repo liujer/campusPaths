@@ -23,7 +23,7 @@ class GridSizePicker extends Component<GridSizePickerProps, any> {
     constructor(props: GridSizePickerProps) {
         super(props);
         this.state = {
-            currString: null,
+            currString: "4",
         };
     }
 
@@ -34,7 +34,6 @@ class GridSizePicker extends Component<GridSizePickerProps, any> {
         // box updates, it'll tell you the new contents of the text box, like we're using
         // below.
         //
-        // TODO - Not currently doing any validation or error handling. Should probably add some...
         const newSize: number = parseInt(event.target.value);
         if (event.target.value == "") {
             this.props.onChange(0);
@@ -56,7 +55,7 @@ class GridSizePicker extends Component<GridSizePickerProps, any> {
                         value={this.state.currString}
                         onChange={this.onInputChange}
                         type="number"
-                        min={1}
+                        min={0}
                         max={100}
                     />
                 </label>
