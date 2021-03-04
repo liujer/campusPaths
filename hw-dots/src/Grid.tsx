@@ -91,10 +91,24 @@ class Grid extends Component<GridProps, GridState> {
 
         // Draw all edges
         for (let edge of this.props.edges) {
-            this.drawLine(ctx, edge);
+            if (this.edgeValid(edge)) {
+                this.drawLine(ctx, edge);
+            }
         }
 
     };
+
+    edgeValid = (edge: [[number, number], [number, number], string]) : boolean => {
+        for (let i = 0; i < edge.length - 1; i++) {
+            for (let j = 0; j < edge.length - 1; j++) {
+                // add error warning if necessary
+                if (edge[i][j] >= this.props.size) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     /**
      * Returns an array of coordinate pairs that represent all the points where grid dots should

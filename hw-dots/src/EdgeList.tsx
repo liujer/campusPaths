@@ -23,12 +23,14 @@ interface EdgeListProps {
  * Also contains the buttons that the user will use to interact with the app.
  */
 class EdgeList extends Component<EdgeListProps, any> {
+
     constructor(props: EdgeListProps) {
         super(props);
         this.state = {
             edges: "",
         }
     }
+
     onInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         const stringEdges = event.target.value;
         this.setState({edges: stringEdges});
@@ -55,7 +57,7 @@ class EdgeList extends Component<EdgeListProps, any> {
                     temp[2]
                 ];
                 // Add array element if valid line of input
-                let testInput = this.validateInput(newEdge, lineNumber, this.props.size);
+                let testInput = this.validateInput(newEdge, lineNumber);
                 if (testInput == "") { // no errors from validation
                     result.push(newEdge);
                 } else {
@@ -74,7 +76,7 @@ class EdgeList extends Component<EdgeListProps, any> {
     };
 
     validateInput = (edge : [[number, number], [number, number], string],
-                     lineNumber: number, gridSize: number) : string => {
+                     lineNumber: number) : string => {
         let lineString = "Line " + lineNumber + ": ";
         let alertMsg = ""; // track alerts
         // iterate through all coordinates in edge
@@ -83,7 +85,7 @@ class EdgeList extends Component<EdgeListProps, any> {
                 // add error warning if necessary
                 if (edge[i][j] < 0) {
                     alertMsg = alertMsg.concat(lineString + "Point " + i + " has a negative coordinate\n");
-                } else if (edge[i][j] >= gridSize) {
+                } else if (edge[i][j] > this.props.size) {
                     alertMsg = alertMsg.concat(lineString + "Point " + i + " has a coordinate " +
                         "higher than grid size\n");
                 }
@@ -95,6 +97,7 @@ class EdgeList extends Component<EdgeListProps, any> {
     draw = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         this.props.onChange(this.parseData());
     }
+
     render() {
         return (
             <div id="edge-list">
