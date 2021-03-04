@@ -92,18 +92,16 @@ class Grid extends Component<GridProps, GridState> {
      * Returns an array of coordinate pairs that represent all the points where grid dots should
      * be drawn.
      */
-    getCoordinates = (): [number, number][] => {
+    getCoordinates = () : [number, number][]=> {
         // A hardcoded 4x4 grid. Probably not going to work when we change the grid size...
-        let coords = [];
+        let coords: [number, number][] = [];
+        let increment = 500 / (this.props.size + 1);
         for (let i = 0; i < this.props.size; i++) {
-            for
+            for (let j = 0; j < this.props.size; j++) {
+                coords.push([(i + 1) * increment, (j + 1) * increment]);
+            }
         }
-        return [
-            [100, 100], [100, 200], [100, 300], [100, 400],
-            [200, 100], [200, 200], [200, 300], [200, 400],
-            [300, 100], [300, 200], [300, 300], [300, 400],
-            [400, 100], [400, 200], [400, 300], [400, 400]
-        ];
+        return coords;
     };
 
     drawCircle = (ctx: CanvasRenderingContext2D, coordinate: [number, number]) => {
