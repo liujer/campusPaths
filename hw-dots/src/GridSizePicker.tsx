@@ -18,7 +18,11 @@ interface GridSizePickerProps {
     onChange(newSize: number): void;  // called when a new size is picked
 }
 
-class GridSizePicker extends Component<GridSizePickerProps, any> {
+interface GridSizePickerState {
+    currString: string;
+}
+
+class GridSizePicker extends Component<GridSizePickerProps, GridSizePickerState> {
 
     constructor(props: GridSizePickerProps) {
         super(props);
@@ -35,13 +39,14 @@ class GridSizePicker extends Component<GridSizePickerProps, any> {
         // below.
         //
         const newSize: number = parseInt(event.target.value);
-        if (event.target.value == "") {
+        this.setState({currString: event.target.value});
+        if (event.target.value === "") {
             this.props.onChange(0);
-            this.setState({currString: ""});
         }
         else if (newSize <= 100 && newSize >= 0) {
             this.props.onChange(newSize); // Tell our parent component about the new size.
-            this.setState({currString: newSize.toString()});
+        } else {
+            alert("Input is larger than 100 or lower than 0");
         }
 
     };

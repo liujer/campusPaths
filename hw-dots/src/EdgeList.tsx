@@ -18,11 +18,15 @@ interface EdgeListProps {
     size: number;
 }
 
+interface EdgeListState {
+    edges: string;
+}
+
 /**
  * A text field that allows the user to enter the list of edges.
  * Also contains the buttons that the user will use to interact with the app.
  */
-class EdgeList extends Component<EdgeListProps, any> {
+class EdgeList extends Component<EdgeListProps, EdgeListState> {
 
     constructor(props: EdgeListProps) {
         super(props);
@@ -98,6 +102,11 @@ class EdgeList extends Component<EdgeListProps, any> {
         this.props.onChange(this.parseData());
     }
 
+    clear = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        this.setState({edges: ""});
+        this.props.onChange([]);
+    }
+
     render() {
         return (
             <div id="edge-list">
@@ -109,7 +118,7 @@ class EdgeList extends Component<EdgeListProps, any> {
                     value={this.state.edges}
                 /> <br/>
                 <button onClick={this.draw}>Draw</button>
-                <button onClick={() => {this.setState({edges: ""})}}>Clear</button>
+                <button onClick={this.clear}>Clear</button>
             </div>
         );
     }
