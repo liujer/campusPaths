@@ -61,17 +61,18 @@ class DropdownMenu extends Component<DropdownMenuProps, DropdownMenuState> {
 
     render() {
         return (
-            <div id="DropdownMenu">
-                <select key="start" value={this.state.currStart} onChange={(event) => {
+            <div id="DropdownMenu"> From:
+                <select className="input" key="start" value={this.state.currStart} onChange={(event) => {
                     this.setState({currStart: event.target.value})}}>
-                    {Object.values(this.state.data).map((value) => <option key={value}>{value}</option>)}
+                    {Object.values(this.state.data).map((value) => <option className="input" key={value}>{value}</option>)}
                 </select>
-                <select key="dest" value={this.state.currDest} onChange={(event) => {
+                To:
+                <select className="input" key="dest" value={this.state.currDest} onChange={(event) => {
                     this.setState({currDest: event.target.value})}}>
-                    {Object.values(this.state.data).map((value) => <option key={value}>{value}</option>)}
+                    {Object.values(this.state.data).map((value) => <option className="input" key={value}>{value}</option>)}
                 </select>
-                <button onClick={this.getPathPoints}>Find Path</button>
-                <button onClick={this.clear}>Clear</button>
+                <button className="input" onClick={this.getPathPoints}>Find Path</button>
+                <button className="input" onClick={this.clear}>Clear</button>
             </div>
 
         );
