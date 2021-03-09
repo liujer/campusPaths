@@ -12,11 +12,33 @@
 import React, {Component} from 'react';
 import "./Map.css";
 
+interface MapProps {
+    start: string,
+    dest: string,
+}
 interface MapState {
-    backgroundImage: HTMLImageElement | null;
+    backgroundImage: HTMLImageElement | null,
+    currPath: Path | null,
 }
 
-class Map extends Component<{}, MapState> {
+interface Path {
+    cost: number,
+    start: [number, number],
+    path: Segment[],
+}
+
+interface Segment {
+    cost: number,
+    start: Point,
+    end: Point,
+}
+
+interface Point {
+    x: number,
+    y: number
+}
+
+class Map extends Component<MapProps, MapState> {
 
     // NOTE:
     // This component is a suggestion for you to use, if you would like to.
@@ -27,20 +49,34 @@ class Map extends Component<{}, MapState> {
 
     canvas: React.RefObject<HTMLCanvasElement>;
 
-    constructor(props: {}) {
+    constructor(props: MapProps) {
         super(props);
         this.state = {
-            backgroundImage: null
+            backgroundImage: null,
+            currPath: null,
         };
         this.canvas = React.createRef();
+
+
     }
 
     componentDidMount() {
         // Might want to do something here?
+        this.fetchAndSaveImage();
+        this.drawBackgroundImage();
+
+
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps: Readonly<MapProps>, prevState : Readonly<MapState>) {
         // Might want something here too...
+        if (prevProps.start !== this.props.start ||
+            prevProps.dest !== this.props.dest) {
+            this.sendRequest();
+        }
+        this.drawBackgroundImage();
+
+
     }
 
     fetchAndSaveImage() {
@@ -63,6 +99,7 @@ class Map extends Component<{}, MapState> {
         let ctx = canvas.getContext("2d");
         if (ctx === null) throw Error("Unable to draw, no valid graphics context.");
         //
+
         if (this.state.backgroundImage !== null) { // This means the image has been loaded.
             // Sets the internal "drawing space" of the canvas to have the correct size.
             // This helps the canvas not be blurry.
@@ -70,11 +107,55 @@ class Map extends Component<{}, MapState> {
             canvas.height = this.state.backgroundImage.height;
             ctx.drawImage(this.state.backgroundImage, 0, 0);
         }
+        if (this.state.currPath !== null) {
+            console.log(this.state.currPath);
+            this.state.currPath.path.forEach( (segment) => {
+                this.drawLine(ctx, segment.start, segment.end);
+            })
+        }
+
     }
+
+    async sendRequest() {
+        try {
+            const url = 'http://localhost:4567/findPath?start=' + this.props.start
+                + "&dest=" + this.props.dest;
+            let response = await fetch(url);
+            if (!response.ok) {
+                alert("Unable to fetch data");
+                return;
+            }
+            let parsed : Path = await response.json() as Path;
+
+            this.setState({
+                currPath: parsed
+            });
+
+        } catch (e: any) {
+            console.log(e.message);
+        }
+
+    }
+
+    drawLine = (ctx: CanvasRenderingContext2D | null, start: Point, end: Point) => {
+        console.log(start);
+        if (ctx != null) {
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = "red";
+            ctx.beginPath();
+            ctx.moveTo(start.x, start.y);
+            ctx.lineTo(end.x, end.y);
+            ctx.stroke();
+        }
+
+    };
 
     render() {
         return (
-            <canvas ref={this.canvas}/>
+            <div id="map">
+                <canvas ref={this.canvas}/>
+            </div>
+
         )
     }
 }

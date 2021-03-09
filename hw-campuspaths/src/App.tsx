@@ -10,12 +10,41 @@
  */
 
 import React, {Component} from 'react';
+import DropdownMenu from "./DropdownMenu";
+import Map from "./Map";
+import "./App.css";
 
-class App extends Component<{}, {}> {
+interface AppState {
+    start: string,
+    dest: string,
+}
+
+class App extends Component<{}, AppState> {
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            start: "PAR",
+            dest: "PAR",
+        };
+    }
 
     render() {
         return (
-            <p>Here's the beginning of your AMAZING CampusPaths GUI!</p>
+
+            <div id="app-div">
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Aleo&display=swap');
+                </style>
+                <div id="title">Campus Paths</div>
+                <DropdownMenu onChange={(start: string, dest: string) => {
+                    this.setState({
+                        start: start,
+                        dest: dest,
+                    })
+                }}>Find Path</DropdownMenu>
+                <Map start={this.state.start} dest={this.state.dest}>Campus Map</Map>
+            </div>
         );
     }
 
